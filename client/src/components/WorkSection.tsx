@@ -58,7 +58,7 @@ export function WorkSection({ items }: WorkSectionProps) {
 
               {/* Work Item 1 - Current */}
               <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8">
-                <h3 className="text-base sm:text-lg md:text-md font-light flex flex-wrap items-center gap-2">
+                <h3 className="text-base font-gothic sm:text-lg md:text-md font-light flex flex-wrap items-center gap-2">
                   Software Engineer
                   <span className='inline-block text-[#ffff] text-xs font-light px-2 py-1 bg-[#de8509c8] drop-shadow-xs drop-shadow-amber-400 rounded-lg'>
                     Current
@@ -71,7 +71,7 @@ export function WorkSection({ items }: WorkSectionProps) {
                     <IoCalendarSharp className='w-4 h-4' /> 2025 - Now
                   </span>
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-base text-[#919191]">
-                    <FaBriefcase className="shrink-0" />
+                    <FaBriefcase className="shrink-0 w-4 h-4" />
                     <span>Designed Securities Ltd.</span>
                   </div>
                   <p className="text-xs sm:text-sm font-base text-[#919191] flex items-center gap-2">
@@ -86,17 +86,17 @@ export function WorkSection({ items }: WorkSectionProps) {
                     <IoCalendarSharp className='w-4 h-4' /> 2025 - Now
                   </span>
                   <div className="relative w-full md:mr-4 group">
-                      <div className="flex items-center gap-2 text-xs font-base text-[#919191] whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer">
-                        <FaBriefcase className="shrink-0" />
+                      <div className="flex items-center gap-2 text-xs font-base whitespace-nowrap text-white transition-colors duration-300 cursor-pointer">
+                        <FaBriefcase className="text-[#919191] shrink-0 w-4 h-4" />
                         <div className="overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                          <span className="transform group-hover:translate-x-1 transition-transform duration-300">
+                          <span className="transform translate-x-1 transition-transform duration-300">
                             Designed Securities Ltd.
                           </span>
                         </div>
                       </div>
                     <div className="absolute right-0 top-0 h-full w-6 bg-linear-to-l from-[#141417] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
-                  <div className="ml-auto">
+                  <div className="mr-auto">
                     <p className="text-xs font-base text-[#919191] flex items-center gap-2">
                       <IoLocationOutline className="w-4 h-4" />
                       Peterborough
@@ -105,7 +105,7 @@ export function WorkSection({ items }: WorkSectionProps) {
                 </div>
 
                 <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                  Building scalable web applications and leading frontend architecture decisions.
+                  At designed, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
                 </p>
               </div>
             </AnimatedSectionLeft>
@@ -116,7 +116,7 @@ export function WorkSection({ items }: WorkSectionProps) {
               {/* Work Item 2 */}
               <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8 md:py-8">
                 <h3 className="text-base sm:text-lg md:text-md font-light">
-                  Software Engineer
+                  Research Data Assistant
                 </h3>
 
                 {/* Mobile/Tablet Layout */}
@@ -124,9 +124,9 @@ export function WorkSection({ items }: WorkSectionProps) {
                   <span className="text-[#919191] text-xs sm:text-sm flex items-center font-light gap-2">
                     <IoCalendarSharp className='w-4 h-4' /> 2024 - 2025
                   </span>
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-base text-[#919191]">
-                    <FaBriefcase className="shrink-0" />
-                    <span>Designed Securities Ltd.</span>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-base text-white">
+                    <FaBriefcase className="text-[#919191] shrink-0 w-4 h-4" />
+                    <span>Junior Achievement Northern & Eastern Ontario</span>
                   </div>
                   <p className="text-xs sm:text-sm font-base text-[#919191] flex items-center gap-2">
                     <IoLocationOutline className="w-4 h-4" />
@@ -140,17 +140,17 @@ export function WorkSection({ items }: WorkSectionProps) {
                     <IoCalendarSharp className='w-4 h-4' /> 2024 - 2025
                   </span>
                   <div className="relative w-full md:mr-4 group">
-                      <div className="flex items-center gap-2 text-xs font-base text-[#919191] whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer">
-                        <FaBriefcase className="shrink-0" />
+                      <div className="flex items-center gap-2 text-xs font-base text-white whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer">
+                        <FaBriefcase className="text-[#919191] shrink-0 w-4 h-4" />
                         <div className="overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                           <span className="transform group-hover:translate-x-1 transition-transform duration-300">
-                            Designed Securities Ltd.
+                            Junior Achievement Northern & Eastern Ontario
                           </span>
                         </div>
                       </div>
                     <div className="absolute right-0 top-0 h-full w-6 bg-linear-to-l from-[#141417] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
-                  <div className="ml-auto">
+                  <div className="mr-auto">
                     <p className="text-xs font-base text-[#919191] flex items-center gap-2">
                       <IoLocationOutline className="w-4 h-4" />
                       Peterborough
@@ -159,7 +159,7 @@ export function WorkSection({ items }: WorkSectionProps) {
                 </div>
 
                 <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                  Building scalable web applications and leading frontend architecture decisions.
+                  At Junior Achievement, I was a Research Data Assistant where I was responsible for data collection and analysis for various research projects.
                 </p>
               </div>
             </AnimatedSectionLeft>
@@ -170,7 +170,7 @@ export function WorkSection({ items }: WorkSectionProps) {
               {/* Work Item 3 */}
               <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8 md:py-8">
                 <h3 className="text-base sm:text-lg md:text-md font-light">
-                  Software Engineer
+                  Full Stack Developer Intern
                 </h3>
 
                 {/* Mobile/Tablet Layout */}
@@ -179,12 +179,12 @@ export function WorkSection({ items }: WorkSectionProps) {
                     <IoCalendarSharp className='w-4 h-4' /> 2023 - 2024
                   </span>
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-base text-[#919191]">
-                    <FaBriefcase className="shrink-0" />
-                    <span>Designed Securities Ltd.</span>
+                    <FaBriefcase className="shrink-0 w-4 h-4" />
+                    <span>HostelHop</span>
                   </div>
                   <p className="text-xs sm:text-sm font-base text-[#919191] flex items-center gap-2">
                     <IoLocationOutline className="w-4 h-4" />
-                    Peterborough
+                    Toronto
                   </p>
                 </div>
 
@@ -194,20 +194,20 @@ export function WorkSection({ items }: WorkSectionProps) {
                     <IoCalendarSharp className='w-4 h-4' /> 2023 - 2024
                   </span>
                   <div className="relative w-full md:mr-4 group">
-                      <div className="flex items-center gap-2 text-xs font-base text-[#919191] whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer">
-                        <FaBriefcase className="shrink-0" />
+                      <div className="flex items-center gap-2 text-xs font-base text-white whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer">
+                        <FaBriefcase className="text-[#919191] shrink-0 w-4 h-4" />
                         <div className="overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                           <span className="transform group-hover:translate-x-1 transition-transform duration-300">
-                            Designed Securities Ltd.
+                            HostelHop
                           </span>
                         </div>
                       </div>
                     <div className="absolute right-0 top-0 h-full w-6 bg-linear-to-l from-[#141417] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
-                  <div className="ml-auto">
+                  <div className="mr-auto">
                     <p className="text-xs font-base text-[#919191] flex items-center gap-2">
                       <IoLocationOutline className="w-4 h-4" />
-                      Peterborough
+                      Toronto
                     </p>
                   </div>
                 </div>
@@ -222,9 +222,9 @@ export function WorkSection({ items }: WorkSectionProps) {
             <AnimatedSectionLeft>
 
               {/* Work Item 4 */}
-              <div className="space-y-3 md:space-y-1 pb-6 md:pb-8 md:py-8">
+              <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8 md:py-8">
                 <h3 className="text-base sm:text-lg md:text-md font-light">
-                  Software Engineer
+                  Frontend Developer Intern
                 </h3>
 
                 {/* Mobile/Tablet Layout */}
@@ -233,8 +233,62 @@ export function WorkSection({ items }: WorkSectionProps) {
                     <IoCalendarSharp className='w-4 h-4' /> 2022 - 2023
                   </span>
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-base text-[#919191]">
-                    <FaBriefcase className="shrink-0" />
-                    <span>Designed Securities Ltd.</span>
+                    <FaBriefcase className="text-[#919191] shrink-0 w-4 h-4" />
+                    <span>EasyFits</span>
+                  </div>
+                  <p className="text-xs sm:text-sm font-base text-[#919191] flex items-center gap-2">
+                    <IoLocationOutline className="w-4 h-4" />
+                    Pickering
+                  </p>
+                </div>
+
+                {/* Desktop Layout */}
+                <div className="hidden md:grid md:grid-cols-3">
+                  <span className="text-[#919191] text-xs flex items-center font-light gap-2">
+                    <IoCalendarSharp className='w-4 h-4' /> 2022 - 2023
+                  </span>
+                  <div className="relative w-full md:mr-4 group">
+                      <div className="flex items-center gap-2 text-xs font-base text-white whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer">
+                        <FaBriefcase className="text-[#919191] shrink-0 w-4 h-4" />
+                        <div className="overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                          <span className="transform group-hover:translate-x-1 transition-transform duration-300">
+                            EasyFits
+                          </span>
+                        </div>
+                      </div>
+                    <div className="absolute right-0 top-0 h-full w-6 bg-linear-to-l from-[#141417] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+                  <div className="mr-auto">
+                    <p className="text-xs font-base text-[#919191] flex items-center gap-2">
+                      <IoLocationOutline className="w-4 h-4" />
+                      Pickering
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
+                  At EasyFits, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
+                </p>
+              </div>
+            </AnimatedSectionLeft>
+
+
+            <AnimatedSectionLeft>
+
+              {/* Work Item 5 */}
+              <div className="space-y-3 md:space-y-1 pb-6 md:pb-8 md:py-8">
+                <h3 className="text-base sm:text-lg md:text-md font-light">
+                  Teaching Assistant
+                </h3>
+
+                {/* Mobile/Tablet Layout */}
+                <div className="flex flex-col gap-2 md:hidden">
+                  <span className="text-[#919191] text-xs sm:text-sm flex items-center font-light gap-2">
+                    <IoCalendarSharp className='w-4 h-4' /> 2022 - 2023
+                  </span>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-base text-[#919191]">
+                    <FaBriefcase className="text-[#919191] shrink-0 w-4 h-4" />
+                    <span>Trent University</span>
                   </div>
                   <p className="text-xs sm:text-sm font-base text-[#919191] flex items-center gap-2">
                     <IoLocationOutline className="w-4 h-4" />
@@ -248,17 +302,17 @@ export function WorkSection({ items }: WorkSectionProps) {
                     <IoCalendarSharp className='w-4 h-4' /> 2022 - 2023
                   </span>
                   <div className="relative w-full md:mr-4 group">
-                      <div className="flex items-center gap-2 text-xs font-base text-[#919191] whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer">
-                        <FaBriefcase className="shrink-0" />
+                      <div className="flex items-center gap-2 text-xs font-base text-white whitespace-nowrap hover:text-white transition-colors duration-300 cursor-pointer">
+                        <FaBriefcase className="text-[#919191] shrink-0 w-4 h-4" />
                         <div className="overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                           <span className="transform group-hover:translate-x-1 transition-transform duration-300">
-                            Designed Securities Ltd.
+                            Trent University
                           </span>
                         </div>
                       </div>
                     <div className="absolute right-0 top-0 h-full w-6 bg-linear-to-l from-[#141417] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
-                  <div className="ml-auto">
+                  <div className="mr-auto">
                     <p className="text-xs font-base text-[#919191] flex items-center gap-2">
                       <IoLocationOutline className="w-4 h-4" />
                       Peterborough
@@ -267,7 +321,7 @@ export function WorkSection({ items }: WorkSectionProps) {
                 </div>
 
                 <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                  Building scalable web applications and leading frontend architecture decisions.
+                  At EasyFits, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
                 </p>
               </div>
             </AnimatedSectionLeft>

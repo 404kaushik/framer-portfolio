@@ -13,7 +13,7 @@ export function ProficienciesSection() {
     <section id="proficiencies" className="w-full mx-auto py-12 md:py-4 px-4 sm:px-6">
       <div className="container w-full md:max-w-2xl mx-auto">
         <div className="grid md:grid-cols-2 gap-2 md:gap-12 items-start">
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 md:sticky md:top-15">
             <AnimatedSectionLeft className="md:sticky md:top-15 self-start">
               <h2 className="text-3xl md:text-4xl md:font-normal text-white sticky top-14 md:top-16 z-40">Proficiencies</h2>            
             </AnimatedSectionLeft>

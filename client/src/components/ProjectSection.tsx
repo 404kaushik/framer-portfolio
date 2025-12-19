@@ -129,10 +129,10 @@ function ProjectCard({ project }: ProjectCardProps) {
 
 export default function ProjectSection() {
   return (
-    <section className="relative min-h-screen bg-[#161616] py-20 font-light">
+    <section className="relative flex items-center min-h-screen bg-[#161616] font-light">
       {/* Grid Background */}
       <div
-        className="pointer-events-none absolute inset-0 "
+        className="pointer-events-none absolute inset-0 mt-4 md:mt-12"
         style={{
           backgroundImage: `
             linear-gradient(to right, #2a2a2a 1px, transparent 1px),
@@ -142,7 +142,7 @@ export default function ProjectSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-2xl ">
+      <div className="relative mx-auto w-2xl">
         <div className="flex flex-col gap-16 md:flex-row md:items-start md:justify-between">
           {/* Heading */}
           <h2 className="text-2xl md:text-4xl font-normal tracking-tight text-white">Projects</h2>

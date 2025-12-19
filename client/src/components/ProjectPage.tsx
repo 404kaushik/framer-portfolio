@@ -151,11 +151,11 @@ export default function ProjectPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#161616] font-light text-white">
+    <main className="min-h-screen bg-[#161616] font-light text-white md:pt-12">
       {/* Header */}
       <header className="flex items-center max-w-2xl mx-auto justify-between px-4 sm:px-6 py-4 sm:py-6 md:px-12">
         <Link to="/" className="text-xs sm:text-sm text-[#888888] transition-colors hover:text-white">
-          Riya's Resume 
+          Kaushik's Resume 
         </Link>
         <button className="flex items-center gap-2 text-xs sm:text-sm text-[#888888] transition-colors hover:text-white">
           <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
