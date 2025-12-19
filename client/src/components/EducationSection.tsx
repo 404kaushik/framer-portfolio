@@ -46,7 +46,7 @@ export function EducationSection({ items }: EducationSectionProps) {
       <div className="container max-w-2xl mx-auto">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between md:items-start mb-8 md:mb-0">
-          <AnimatedSection className="md:sticky md:top-15 self-start">
+          <AnimatedSection className="md:sticky md:top-20 self-start">
             <h2 className="text-3xl sm:text-4xl md:text-4xl md:font-normal mb-6 md:mb-0">Education</h2>
           </AnimatedSection>
         {/* Education Items Container */}
