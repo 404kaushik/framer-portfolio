@@ -273,9 +273,9 @@ export function WorkSection({ items }: WorkSectionProps) {
             </AnimatedSectionLeft>
           </div>
 
-          {/* Decorative divider */}
         </div>
       </div>
+      {/* Decorative divider */}
       <motion.div
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
