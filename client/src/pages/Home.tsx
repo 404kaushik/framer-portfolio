@@ -9,15 +9,14 @@ import { ContactSection } from '@/components/ContactSection';
 
 export default function Home() {
   const portfolio = {
-    name: 'Riya Jaykar',
+    name: 'Kaushik Nag Tumu',
     about: {
       highlights: [
-        'Full-Stack Developer',
-        'Based in Berlin',
+        'Software & Data Engineer',
+        'Based in Toronto',
         '5+ Years Experience',
-        'Open to Work',
       ],
-      description: 
+      description:
         `When I\'m not coding, you\'ll find me on the tennis court, gaming, or sharing a good meal with friends.`,
     },
     proficiencies: [
@@ -49,7 +48,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#141417] text-foreground">
+    <div className="min-h-screen overflow-x-clip bg-[#141417] text-foreground">
       <Navigation />
       <HeroSection name={portfolio.name} />
       <ProficienciesSection />

@@ -33,6 +33,7 @@ export default defineConfig({
       ".manus-asia.computer",
       ".manuscomputer.ai",
       ".manusvm.computer",
+      "unfinanced-alyssa-quarrelsomely.ngrok-free.dev",
       "localhost",
       "127.0.0.1",
     ],

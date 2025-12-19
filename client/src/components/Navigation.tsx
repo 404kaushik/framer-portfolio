@@ -22,14 +22,14 @@ export function Navigation() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#141417]/95 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
           {/* Logo/Title */}
-          <h1 className="text-xs sm:text-sm md:text-base font-light text-[#919191] hover:text-white transition-colors duration-300">
-            Riya's Resume
+          <h1 className="text-xs sm:text-sm md:text-base font-light text-[#919191] hover:text-white transition-colors duration-300 cursor-pointer">
+            Kaushik's Resume
           </h1>
           
           {/* Menu Button */}
           <button 
             onClick={toggleMenu}
-            className="flex items-center gap-2 text-foreground hover:scale-110 transition-all duration-300 group"
+            className="flex items-center gap-2 text-foreground cursor-pointer hover:scale-110 transition-all duration-300 group"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -89,10 +89,10 @@ export function Navigation() {
                 : 'translate-y-4 opacity-0'
             }`}>
               <div className="flex flex-col sm:flex-row gap-3 px-4">
-                <button className="flex-1 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-[#919191] hover:text-white rounded-lg text-sm font-light transition-all duration-300 border border-white/10 hover:border-white/20">
+                <button className="flex-1 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-[#ffffff] hover:text-white rounded-lg text-sm transition-all duration-300 border border-white/10 font-medium hover:border-white/20">
                   Download Resume
                 </button>
-                <button className="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105">
+                <button className="flex-1 px-4 py-2.5 bg-white/95 hover:bg-white/10 text-[#000000] hover:text-white rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105">
                   Get In Touch
                 </button>
               </div>

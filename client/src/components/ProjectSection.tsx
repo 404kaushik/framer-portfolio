@@ -142,11 +142,10 @@ export default function ProjectSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-2xl px-6">
+      <div className="relative mx-auto max-w-2xl ">
         <div className="flex flex-col gap-16 md:flex-row md:items-start md:justify-between">
           {/* Heading */}
-          <h2 className="text-4xl font-light tracking-tight text-white">Projects</h2>
-
+          <h2 className="text-2xl md:text-4xl font-normal tracking-tight text-white">Projects</h2>
           {/* Project Cards */}
           <div className="flex flex-col gap-6">
             {projects.map((project) => (

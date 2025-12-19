@@ -5,12 +5,12 @@ interface AnimatedSectionProps {
   className?: string;
 }
 
-export function AnimatedSection({ children, className }: AnimatedSectionProps) {
+export function AnimatedSectionLeft({ children, className }: AnimatedSectionProps) {
   const variants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: { duration: 0.6, ease: 'easeOut' as const },
     },
   };
