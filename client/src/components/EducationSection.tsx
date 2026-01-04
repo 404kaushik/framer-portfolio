@@ -56,7 +56,7 @@ export function EducationSection({ items }: EducationSectionProps) {
             {/* Education Item 1 - Highest */}
             <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8">
               <h3 className="text-base sm:text-md md:text-md font-light flex flex-wrap items-center gap-2">
-                BBA Honours in Marketing & Econ
+                BSc Honours in Computer Science
                 <span className='inline-block text-[#ffff] text-[0.70rem] font-light px-2 py-1 bg-[#de8509c8] drop-shadow-xs drop-shadow-amber-400 rounded-lg'>
                   Highest
                 </span>
@@ -102,7 +102,13 @@ export function EducationSection({ items }: EducationSectionProps) {
               </div>
 
               <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                Comprehensive business education with focus on marketing strategies and economic principles.
+                <ul className="w-full ml-6 list-disc space-y-1">
+                  <li className='text-xs sm:text-sm md:text-sm'>Double specialization in Software Engineering and Data Analytics.</li>
+                  <li className='text-xs sm:text-sm md:text-sm'>GPA: 3.9/4.0</li>
+                  <li className='text-xs sm:text-sm md:text-sm'>Dean's List: 2022, 2023, 2024, 2025</li>
+                  <li className='text-xs sm:text-sm md:text-sm'>Presidents Honour Roll ' 25</li>                  
+                  <li className='text-xs sm:text-sm md:text-sm'>Trent International Scholarship ($30,000)</li>
+                </ul>
               </p>
             </div>
           </AnimatedSectionLeft>
@@ -155,8 +161,13 @@ export function EducationSection({ items }: EducationSectionProps) {
             </div>
 
             <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-              Strong academic foundation with focus on core subjects and language development.
-            </p>
+                <ul className="w-full ml-6 list-disc space-y-1">
+                  <li className='text-xs sm:text-sm md:text-sm'>Graduated in commerce</li>
+                  <li className='text-xs sm:text-sm md:text-sm'>Sportsman of the year (2020-2021)</li>
+                  <li className='text-xs sm:text-sm md:text-sm'>Grade 12: 87%</li>
+                  <li className='text-xs sm:text-sm md:text-sm'>Grade 10: 90%</li>                                    
+                </ul>
+              </p>
           </div>
         </AnimatedSectionLeft>
         </div>

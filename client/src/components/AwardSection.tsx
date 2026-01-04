@@ -44,10 +44,10 @@ export function AwardSection() {
                 <div className="flex items-start gap-3">
                   <div className="flex-1">
                     <h3 className="text-base sm:text-lg md:text-md font-light mb-1">
-                      Award 1
+                      Spectrum Award by Champlain College
                     </h3>
                     <p className="text-sm sm:text-base md:text-sm font-base text-[#919191]">
-                      2025 at xyz place
+                      Awarded by Champlain College for outstanding involvement and exceptional contributions to the community and extracurricular initiatives.
                     </p>
                   </div>
                 </div>
@@ -60,10 +60,10 @@ export function AwardSection() {
                 <div className="flex items-start gap-3">
                   <div className="flex-1">
                     <h3 className="text-base sm:text-lg md:text-md font-light mb-1">
-                      Award 2
+                      Best use of Gemini API
                     </h3>
                     <p className="text-sm sm:text-base md:text-sm font-base text-[#919191]">
-                      2021 at xyz place
+                      Awarded by MLH (Major League Hacking) during the TMU's Google OnCampus Hackathon.
                     </p>
                   </div>
                 </div>
@@ -76,10 +76,10 @@ export function AwardSection() {
                 <div className="flex items-start gap-3">
                   <div className="flex-1">
                     <h3 className="text-base sm:text-lg md:text-md font-light mb-1">
-                      Award 3
+                      3rd Place General Category
                     </h3>
                     <p className="text-sm sm:text-base md:text-sm font-base text-[#919191]">
-                      2019 at xyz place
+                      Awarded by University of Ottawa's Hack the Hill hackathon.
                     </p>
                   </div>
                 </div>
