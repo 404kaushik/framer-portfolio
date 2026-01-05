@@ -1,256 +1,219 @@
-import React from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import "react-router-dom";
-import { useRoute } from 'wouter';
+import React, { useEffect } from 'react';
+import { useRoute, Link } from 'wouter';
+import { projects } from '../data/projects';
+import {
+  Globe,
+  Sparkles,
+  BarChart3,
+  PawPrint,
+  Code2,
+  Layout,
+  Calendar,
+  Users,
+  Heart,
+  ArrowLeft,
+  Github,
+  ExternalLink
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const projectsData = {
-  shelf: {
-    name: "Shelf",
-    description: "Digital Library for Developers",
-    year: "2023",
-    type: "Side Project",
-    role: "Full-Stack Developer",
-    icon: "dots",
-    heroColor: "#6b7c6b",
-    caseStudy: {
-      objective:
-        "Create a minimalist, intuitive platform designed to help users effortlessly organize, discover, and manage their digital content, reducing clutter and enhancing productivity.",
-      process:
-        "My design process for Shelf focused on understanding user habits around digital content and crafting a simple, effective solution. I began by developing a Minimum Viable Product (MVP) based on an initial prototype provided by a befriended UX Designer. This MVP underwent rigorous testing with 15 target users, and their invaluable feedback directly informed subsequent design refinements, culminating in the final product.",
-      outcome:
-        "The final product successfully reduced digital clutter for users by 40% and increased daily productivity metrics by 25%. User satisfaction scores averaged 4.8/5 in post-launch surveys.",
-    },
-  },
-  locale: {
-    name: "Locale",
-    description: "Lightweight Content Localization",
-    year: "2023",
-    type: "Side Project",
-    role: "Full-Stack Developer",
-    icon: "asterisk",
-    heroColor: "#7c6b5c",
-    caseStudy: {
-      objective:
-        "Build a lightweight localization tool that enables developers to easily manage and deploy multilingual content without complex configurations.",
-      process:
-        "The development focused on creating an intuitive API-first approach. Through iterative testing with development teams, we refined the workflow to minimize friction when adding new languages and managing translations.",
-      outcome:
-        "Locale reduced localization setup time by 60% compared to traditional solutions, with adoption by over 200 development teams in the first quarter.",
-    },
-  },
-  taskly: {
-    name: "Taskly",
-    description: "Minimal Task Manager",
-    year: "2024",
-    type: "Side Project",
-    role: "Full-Stack Developer",
-    icon: "layers",
-    heroColor: "#5c6b7c",
-    caseStudy: {
-      objective:
-        "Design a distraction-free task management application that focuses on simplicity and quick task capture.",
-      process:
-        "Research into productivity habits revealed that most task apps suffer from feature bloat. Taskly was designed with intentional constraints, focusing only on essential features that drive task completion.",
-      outcome:
-        "Users reported 35% higher task completion rates compared to their previous tools, with an average session time of just 45 seconds per interaction.",
-    },
-  },
+const iconMap: Record<string, React.ElementType> = {
+  globe: Globe,
+  sparkles: Sparkles,
+  chart: BarChart3,
+  paw: PawPrint,
+  code: Code2,
+  layout: Layout,
+  calendar: Calendar,
+  users: Users,
+  heart: Heart,
 };
 
-function DotsIcon({ className = "size-8" }: { className?: string }) {
-  return (
-    <div className={`grid grid-cols-4 gap-1.5 ${className}`}>
-      {[...Array(12)].map((_, i) => (
-        <div
-          key={i}
-          className={`size-2 rounded-full ${
-            [0, 1, 2, 3, 5, 6, 8, 9, 10, 11].includes(i) ? "bg-white" : "bg-transparent"
-          }`}
-        />
-      ))}
-    </div>
-  );
-}
-
-function AsteriskIcon({ className = "size-8" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round">
-      <line x1="12" y1="2" x2="12" y2="22" />
-      <line x1="2" y1="12" x2="22" y2="12" />
-      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-      <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
-    </svg>
-  );
-}
-
-function LayersIcon({ className = "size-8" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none">
-      <path d="M2 17l10 5 10-5" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M2 12l10 5 10-5" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path
-        d="M12 2L2 7l10 5 10-5-10-5z"
-        stroke="#93c5fd"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function HeroIllustration({ color, icon }: { color: string; icon: string }) {
-  return (
-    <div
-      className="relative flex h-60 sm:h-72 md:h-80 w-full items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl"
-      style={{ backgroundColor: color }}
-    >
-      {/* Connecting lines with dots - Hidden on mobile for cleaner look */}
-      <svg className="absolute inset-0 h-full w-full hidden sm:block" viewBox="0 0 800 320">
-        {/* Top line */}
-        <line x1="50" y1="120" x2="650" y2="100" stroke="#c5d4c5" strokeWidth="2" />
-        <circle cx="650" cy="100" r="12" fill="#c5d4c5" />
-
-        {/* Middle line */}
-        <line x1="100" y1="180" x2="280" y2="170" stroke="#c5d4c5" strokeWidth="2" />
-        <circle cx="280" cy="170" r="10" fill="#c5d4c5" />
-
-        {/* Bottom line */}
-        <line x1="150" y1="240" x2="580" y2="230" stroke="#c5d4c5" strokeWidth="2" />
-        <circle cx="580" cy="230" r="12" fill="#c5d4c5" />
-      </svg>
-
-      {/* Center icon */}
-      <div className="relative z-10 flex size-16 sm:size-20 items-center justify-center rounded-xl sm:rounded-2xl bg-[#1a1a1a]">
-        {icon === "dots" && <DotsIcon className="size-8 sm:size-10" />}
-        {icon === "asterisk" && <AsteriskIcon className="size-8 sm:size-10" />}
-        {icon === "layers" && <LayersIcon className="size-8 sm:size-10" />}
-      </div>
-    </div>
-  );
+function getYouTubeId(url: string) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
 }
 
 export default function ProjectPage() {
   const [match, params] = useRoute("/projects/:slug");
-  const slug = params?.slug as string | undefined;
-  const navigate = useNavigate();
-  
-  const project = slug ? projectsData[slug as keyof typeof projectsData] : null;
+  const slug = match ? params.slug : null;
+
+  // Find project by slug
+  const project = projects.find(p => p.slug === slug);
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!project) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#161616] text-white px-4">
+      <div className="flex min-h-screen items-center justify-center bg-[#0A0A0A] text-white px-4">
         <div className="text-center">
-          <h1 className="mb-4 text-3xl sm:text-4xl font-light">Project Not Found</h1>
-          <Link to="/" className="text-[#888888] hover:text-white transition-colors">
-            Go back home
+          <h1 className="mb-4 text-3xl font-light">Project Not Found</h1>
+          <Link href="/">
+            <a className="text-[#888888] hover:text-white transition-colors inline-flex items-center gap-2 cursor-pointer">
+              <ArrowLeft className="size-4" /> Go back home
+            </a>
           </Link>
         </div>
       </div>
     );
   }
 
+  const Icon = iconMap[project.icon] || Code2;
+
   return (
-    <main className="min-h-screen bg-[#161616] font-light text-white md:pt-12">
-      {/* Header */}
-      <header className="flex items-center max-w-2xl mx-auto justify-between px-4 sm:px-6 py-4 sm:py-6 md:px-12">
-        <Link to="/" className="text-xs sm:text-sm text-[#888888] transition-colors hover:text-white">
-          Kaushik's Resume 
-        </Link>
-        <button className="flex items-center gap-2 text-xs sm:text-sm text-[#888888] transition-colors hover:text-white">
-          <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <line x1="4" y1="6" x2="20" y2="6" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-          </svg>
-          <span className="hidden sm:inline">Menu</span>
-        </button>
-      </header>
+    <main className="min-h-screen bg-[#0A0A0A] text-white selection:bg-white/20">
 
-      {/* Content */}
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 pb-12 sm:pb-16 md:pb-20">
-        {/* Title Section */}
-        <div className="mb-6 sm:mb-8">
-          <h1 className="mb-2 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight">
-            {project.name}
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-[#888888]">
-            {project.description}
-          </p>
-        </div>
-
-        {/* Metadata */}
-        <div className="mb-8 sm:mb-10 border-b border-[#333333] pb-6 sm:pb-8">
-          <div className="flex items-center justify-between py-2 sm:py-1">
-            <span className="text-sm sm:text-base text-[#888888]">Year</span>
-            <span className="text-sm sm:text-base text-white">{project.year}</span>
-          </div>
-          <div className="flex items-center justify-between py-2 sm:py-1">
-            <span className="text-sm sm:text-base text-[#888888]">Type of Project</span>
-            <span className="text-sm sm:text-base text-white">{project.type}</span>
-          </div>
-          <div className="flex items-center justify-between py-2 sm:py-1">
-            <span className="text-sm sm:text-base text-[#888888]">My Role</span>
-            <span className="text-sm sm:text-base text-white">{project.role}</span>
-          </div>
-        </div>
-
-        {/* Hero Illustration */}
-        <HeroIllustration color={project.heroColor} icon={project.icon} />
-
-        {/* Case Study */}
-        <div className="mt-12 sm:mt-16 md:mt-20">
-          <h2 className="mb-6 sm:mb-8 md:mb-10 text-3xl sm:text-4xl font-light">
-            Case Study
-          </h2>
-
-          <div className="space-y-8 sm:space-y-10">
-            <div>
-              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-normal">
-                Objective
-              </h3>
-              <p className="text-sm sm:text-base leading-relaxed text-[#888888]">
-                {project.caseStudy.objective}
-              </p>
-            </div>
-
-            <div>
-              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-normal">
-                Process
-              </h3>
-              <p className="text-sm sm:text-base leading-relaxed text-[#888888]">
-                {project.caseStudy.process}
-              </p>
-            </div>
-
-            <div>
-              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-normal">
-                Outcome
-              </h3>
-              <p className="text-sm sm:text-base leading-relaxed text-[#888888]">
-                {project.caseStudy.outcome}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Back to Projects Link - Mobile Friendly */}
-        <div className="mt-12 sm:mt-16 md:mt-20 pt-8 border-t border-[#333333]">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-2 text-sm sm:text-base text-[#888888] hover:text-white transition-colors"
-          >
-            <svg 
-              className="size-4 sm:size-5" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor" 
-              strokeWidth="2"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Projects
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 md:px-12 pointer-events-none">
+        <div className="flex justify-between items-center max-w-7xl mx-auto pointer-events-auto">
+          <Link href="/">
+            <a className="group flex items-center gap-2 text-sm text-[#888888] hover:text-white transition-colors bg-[#1A1A1A]/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-white/10 cursor-pointer">
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back
+            </a>
           </Link>
         </div>
+      </nav>
+
+      <div className="container mx-auto px-4 md:px-12 pt-32 pb-20 max-w-5xl">
+
+        {/* Header Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-sm font-medium tracking-wider uppercase text-[#888888]">
+              {project.year}
+            </span>
+            <span className="size-1 rounded-full bg-[#333333]" />
+            <span className="text-sm font-medium tracking-wider uppercase text-[#888888]">
+              {project.type}
+            </span>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight mb-8">
+            {project.name}
+          </h1>
+
+          <p className="text-xl md:text-2xl text-[#A1A1A1] font-light leading-relaxed max-w-2xl">
+            {project.fullDescription}
+          </p>
+        </motion.div>
+
+        {/* Links & Skills */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap gap-4 mb-16"
+        >
+          {project.links.demo && (
+            <a
+              href={project.links.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-gray-200 transition-colors"
+            >
+              View Live <ExternalLink className="size-4" />
+            </a>
+          )}
+          {project.links.repo && (
+            <a
+              href={project.links.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#222] text-white border border-white/10 rounded-full font-medium hover:bg-[#333] transition-colors"
+            >
+              <Github className="size-4" /> Source Code
+            </a>
+          )}
+        </motion.div>
+
+        {/* Visual Hero */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative w-full aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden mb-16 flex items-center justify-center bg-[#0A0A0A]"
+          style={!project.heroVideo ? { backgroundColor: project.heroColor + '20' } : undefined}
+        >
+          {project.heroVideo ? (
+            <iframe
+              className="absolute inset-0 w-full h-full object-cover"
+              src={`https://www.youtube.com/embed/${getYouTubeId(project.heroVideo)}?autoplay=1&mute=1&loop=1&playlist=${getYouTubeId(project.heroVideo)}`}
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              title={`${project.name} video`}
+            />
+          ) : (
+            <>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0A0A]/80 z-10" />
+
+              {/* Animated Background Elements */}
+              <div className="absolute inset-0 opacity-30">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-white/5 blur-3xl rounded-full mix-blend-overlay" />
+              </div>
+
+              {/* Central Hero Icon */}
+              <div className="relative z-20 flex flex-col items-center gap-6">
+                <div
+                  className="size-24 md:size-32 rounded-3xl flex items-center justify-center shadow-2xl"
+                  style={{ backgroundColor: project.heroColor }}
+                >
+                  <Icon className="size-12 md:size-16 text-white drop-shadow-md" />
+                </div>
+              </div>
+            </>
+          )}
+        </motion.div>
+
+        {/* Details Grid */}
+        <div className="grid md:grid-cols-3 gap-12 md:gap-24 border-t border-white/10 pt-16">
+          <div className="md:col-span-1 space-y-8">
+            <div>
+              <h3 className="text-sm font-medium uppercase tracking-wider text-[#666] mb-4">Role</h3>
+              <p className="text-lg text-white">{project.role}</p>
+            </div>
+            <div>
+              <h3 className="text-sm font-medium uppercase tracking-wider text-[#666] mb-4">Timeline</h3>
+              <p className="text-lg text-white">{project.year}</p>
+            </div>
+          </div>
+
+          <div className="md:col-span-2">
+            <div className="mb-12">
+              <h3 className="text-sm font-medium uppercase tracking-wider text-[#666] mb-6">Technologies</h3>
+              <div className="flex flex-wrap gap-2">
+                {project.skills.map(skill => (
+                  <span
+                    key={skill}
+                    className="px-4 py-2 rounded-lg bg-[#1A1A1A] border border-white/5 text-[#CCC] text-sm"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-medium uppercase tracking-wider text-[#666] mb-6">About the Project</h3>
+              <div className="prose prose-invert prose-lg max-w-none text-[#A1A1A1]">
+                <p>{project.fullDescription}</p>
+                <p className="mt-4">
+                  This project demonstrates a focus on {project.skills.slice(0, 3).join(', ')}, aiming to solve real-world problems through clean, efficient code and intuitive user interfaces.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
   );

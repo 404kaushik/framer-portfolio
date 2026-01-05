@@ -1,138 +1,109 @@
 import React, { useState } from 'react';
+import { useLocation } from 'wouter';
+import { motion } from 'framer-motion';
+import { projects } from '../data/projects';
+import {
+  Globe,
+  Sparkles,
+  BarChart3,
+  PawPrint,
+  Code2,
+  Layout,
+  Calendar,
+  Users,
+  Heart
+} from 'lucide-react';
 
-import { useNavigate } from 'react-router-dom';
-
-const projects = [
-  {
-    name: "Shelf",
-    description: "Digital Library for Developers",
-    icon: "dots",
-    slug: "shelf",
-  },
-  {
-    name: "Locale",
-    description: "Lightweight Content Localization",
-    icon: "asterisk",
-    slug: "locale",
-  },
-  {
-    name: "Taskly",
-    description: "Minimal Task Manager",
-    icon: "layers",
-    slug: "taskly",
-  },
-];
-
-function DotsIcon() {
-  return (
-    <div className="grid grid-cols-4 gap-1">
-      {[...Array(12)].map((_, i) => (
-        <div
-          key={i}
-          className={`size-1.5 rounded-full ${
-            [0, 1, 2, 3, 5, 6, 8, 9, 10, 11].includes(i) ? "bg-white" : "bg-transparent"
-          }`}
-        />
-      ))}
-    </div>
-  );
-}
-
-function AsteriskIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round">
-      <line x1="12" y1="2" x2="12" y2="22" />
-      <line x1="2" y1="12" x2="22" y2="12" />
-      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-      <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
-    </svg>
-  );
-}
-
-function LayersIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-6" fill="none">
-      <path d="M2 17l10 5 10-5" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M2 12l10 5 10-5" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path
-        d="M12 2L2 7l10 5 10-5-10-5z"
-        stroke="#93c5fd"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+// Icon mapping
+const iconMap: Record<string, React.ElementType> = {
+  globe: Globe,
+  sparkles: Sparkles,
+  chart: BarChart3,
+  paw: PawPrint,
+  code: Code2,
+  layout: Layout,
+  calendar: Calendar,
+  users: Users,
+  heart: Heart,
+};
 
 interface ProjectCardProps {
   project: typeof projects[0];
 }
 
 function ProjectCard({ project }: ProjectCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate();
+  const [_, setLocation] = useLocation();
+  const Icon = iconMap[project.icon] || Code2;
 
   const handleClick = () => {
-    navigate(`/projects/${project.slug}`);
+    setLocation(`/projects/${project.slug}`);
   };
 
   return (
-    <div
-      className="group relative flex h-[88px] w-full items-center rounded-2xl border border-[#333333] bg-[#222222]/80 backdrop-blur-sm transition-all duration-300 hover:border-[#444444] cursor-pointer overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group relative flex w-full flex-col md:flex-row items-start md:items-center rounded-3xl bg-[#1A1A1A]/75 p-4 transition-all duration-300 hover:bg-[#222222] cursor-pointer"
       onClick={handleClick}
     >
-      {/* Default State - Text and Icon */}
-      <div
-        className={`flex w-full items-center gap-4 px-5 py-4 transition-transform duration-300 ${
-          isHovered ? "-translate-x-full" : "translate-x-0"
-        }`}
-      >
-        {/* Icon Container */}
-        <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-[#1a1a1a]">
-          {project.icon === "dots" && <DotsIcon />}
-          {project.icon === "asterisk" && <AsteriskIcon />}
-          {project.icon === "layers" && <LayersIcon />}
-        </div>
-
+      <div className="flex w-full items-center gap-6">        
         {/* Text */}
-        <div className="flex flex-col">
-          <span className="text-lg font-normal text-white">{project.name}</span>
-          <span className="text-sm text-[#888888]">{project.description}</span>
+        <div className="flex flex-col gap-1.5 flex-1 min-w-0">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-3xl font-medium font-serif text-white group-hover:text-gray-100 transition-colors">
+              {project.name}
+            </span>
+            {project.type && (
+              <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-white/10 text-[#888888] bg-white/5">
+                {project.type}
+              </span>
+            )}
+          </div>
+          <span className="text-sm font-light text-[#888888] group-hover:text-[#999999] transition-colors line-clamp-2">
+            {project.shortDescription}
+          </span>
+
+          {/* Skills tags - Desktop only usually, but good here if minimal */}
+          <div className="flex flex-wrap gap-2 mt-2">
+            {project.skills.slice(0, 3).map(skill => (
+              <span key={skill} className="text-xs text-[#666666] bg-[#111111] px-2 py-1 rounded-md">
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Hover State - View Button and Icon */}
-      <div
-        className={`pointer-events-none absolute inset-0 flex items-center justify-between px-5 py-4 transition-transform duration-300 ${
-          isHovered ? "translate-x-0" : "translate-x-80"
-        }`}
-      >
-        {/* View Button */}
-        <div className="flex items-center gap-2 rounded-xl bg-[#1a1a1a] px-6 py-4">
-          <span className="text-base font-normal text-white">View</span>
-          <span className="text-white">→</span>
-        </div>
-
-        {/* Icon Container */}
-        <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-[#1a1a1a]">
-          {project.icon === "dots" && <DotsIcon />}
-          {project.icon === "asterisk" && <AsteriskIcon />}
-          {project.icon === "layers" && <LayersIcon />}
-        </div>
+      {/* Hover Arrow */}
+      <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 transform translate-x-[-10px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 hidden md:block">
+        <svg
+          className="size-6 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function ProjectSection() {
+  // Show top 5 projects for the main section
+  const featuredProjects = projects.slice(0, 5);
+
   return (
-    <section className="relative flex items-center min-h-screen bg-[#161616] font-light">
+    <section className="relative min-h-screen bg-[#0A0A0A] font-sans selection:bg-white/20">
       {/* Grid Background */}
       <div
-        className="pointer-events-none absolute inset-0 mt-4 md:mt-12"
+        className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage: `
             linear-gradient(to right, #2a2a2a 1px, transparent 1px),
@@ -142,15 +113,47 @@ export default function ProjectSection() {
         }}
       />
 
-      <div className="relative mx-auto w-2xl">
-        <div className="flex flex-col gap-16 md:flex-row md:items-start md:justify-between">
+      <div className="container mx-auto px-4 md:px-12 py-24 md:py-32 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-start">
           {/* Heading */}
-          <h2 className="text-2xl md:text-4xl font-normal tracking-tight text-white">Projects</h2>
+          <div className="lg:sticky lg:top-32">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-normal tracking-tight text-white mb-6">
+                Selected
+                <br />
+                <span className="text-[#888888]">Works</span>
+              </h2>
+              <p className="text-[#666666] text-lg max-w-sm mt-8 leading-relaxed">
+                A collection of award-winning hackathon projects and professional work, focused on AI, functionality, and clean design.
+              </p>
+            </motion.div>
+          </div>
+
           {/* Project Cards */}
-          <div className="flex flex-col gap-6">
-            {projects.map((project) => (
-              <ProjectCard key={project.name} project={project} />
+          <div className="flex flex-col gap-6 w-full max-w-xl lg:ml-auto">
+            {featuredProjects.map((project, index) => (
+              <motion.div
+                key={project.slug}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
             ))}
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="mt-4 text-center lg:text-left"
+            >
+              {/* If we had a full projects page, we'd link it here. For now just show top ones. */}
+            </motion.div>
           </div>
         </div>
       </div>
