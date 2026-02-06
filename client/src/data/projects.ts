@@ -18,6 +18,40 @@ export const projects = [
         images: []
     },
     {
+        slug: "timetable-sweetie",
+        name: "Timetable Sweetie",
+        shortDescription: "Award-winning tool for optimizing student schedules.",
+        fullDescription: "A team project built for Hack the Hill (UOttawa), which placed 3rd in the general category among 800+ hacks. Helps students plan their perfect timetable.",
+        year: "2024",
+        type: "Hackathon Winner",
+        role: "Contributor",
+        skills: ["Python", "Flask", "React"],
+        icon: "calendar",
+        heroColor: "#ec4899",
+        links: {
+            repo: "https://devpost.com/software/timetable-sweetie",
+        },
+        images: []
+    },
+    {
+        slug: "mydog8it",
+        name: "myDog8it",
+        shortDescription: "Creative webapp for generating excuses to navigate sticky situations.",
+        fullDescription: "A fun and creative web application that generates excuses for various situations. Placed as one of the 10 winners in a hackathon with over 1000 participants.",
+        year: "2024",
+        type: "Hackathon Winner",
+        role: "Developer",
+        skills: ["React", "Node.js", "Creative UI"],
+        icon: "paw",
+        heroColor: "#eab308",
+        heroVideo: "https://youtu.be/-V3Ke5F_QuM?si=lEVA0eIYcZBRq0z0",
+        links: {
+            demo: "https://resonant-tartufo-926d34.netlify.app/",
+            repo: "https://devpost.com/software/mydog8it",
+        },
+        images: []
+    },
+    {
         slug: "supernova",
         name: "Supernova",
         shortDescription: "Personalized AI version of yourself for social media content generation.",
@@ -53,24 +87,6 @@ export const projects = [
         images: []
     },
     {
-        slug: "mydog8it",
-        name: "myDog8it",
-        shortDescription: "Creative webapp for generating excuses to navigate sticky situations.",
-        fullDescription: "A fun and creative web application that generates excuses for various situations. Placed as one of the 10 winners in a hackathon with over 1000 participants.",
-        year: "2024",
-        type: "Hackathon Winner",
-        role: "Developer",
-        skills: ["React", "Node.js", "Creative UI"],
-        icon: "paw",
-        heroColor: "#eab308",
-        heroVideo: "https://youtu.be/-V3Ke5F_QuM?si=lEVA0eIYcZBRq0z0",
-        links: {
-            demo: "https://resonant-tartufo-926d34.netlify.app/",
-            repo: "https://devpost.com/software/mydog8it",
-        },
-        images: []
-    },
-    {
         slug: "hacktrent",
         name: "HackTrent",
         shortDescription: "Official platform for the HackTrent hackathon.",
@@ -99,22 +115,6 @@ export const projects = [
         heroColor: "#6366f1",
         links: {
             demo: "https://www.trentbsa.ca/",
-        },
-        images: []
-    },
-    {
-        slug: "timetable-sweetie",
-        name: "Timetable Sweetie",
-        shortDescription: "Award-winning tool for optimizing student schedules.",
-        fullDescription: "A team project built for Hack the Hill (UOttawa), which placed 3rd in the general category among 800+ hacks. Helps students plan their perfect timetable.",
-        year: "2024",
-        type: "Hackathon Winner",
-        role: "Contributor",
-        skills: ["Python", "Flask", "React"],
-        icon: "calendar",
-        heroColor: "#ec4899",
-        links: {
-            repo: "https://devpost.com/software/timetable-sweetie",
         },
         images: []
     },

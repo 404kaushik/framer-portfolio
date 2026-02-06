@@ -15,7 +15,7 @@ export function HeroSection({ name, profileImage = "/images/profilePic.JPG" }: H
   }, [])
 
   return (
-    <section className="min-h-2.5 md:min-h-120 mt-12 md:mt-0 md:mb-12 flex items-center justify-center">
+    <section id="home" className="min-h-2.5 md:min-h-120 mt-12 md:mt-0 md:mb-12 flex items-center justify-center">
       <div className="w-full sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-2xl mx-auto mt-2 md:mt-24 px-4 md:px-0">
         <div className="grid md:grid-cols-2 gap-12 justify-start">
           <div className="md:col-span-1">

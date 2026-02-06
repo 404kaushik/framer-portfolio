@@ -56,9 +56,10 @@ export default function Home() {
       <EducationSection items={portfolio.education} />
       <AwardSection />
       <ProjectSection />
-      <ContactSection email="riyajaykar@example.com" socialLinks={{
-        linkedin: 'https://www.linkedin.com/in/riyajaykar',
-        instagram: 'https://www.instagram.com/riyaajaykarr',
+      <ContactSection email="kaushiknag72@outlook.com" socialLinks={{
+        linkedin: 'https://www.linkedin.com/in/kaushiknagtumu',
+        instagram: 'https://www.instagram.com/kaushiknag',
+        github: 'https://www.github.com/404kaushik',
       }} />
     </div>
   );

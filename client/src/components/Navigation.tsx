@@ -1,113 +1,191 @@
-import React, { useState } from 'react';
-import { Menu, X, Home, User, Briefcase, Mail, FileText, Award } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+
+const links = [
+  { label: 'work', href: '#work' },
+  { label: 'skills', href: '#proficiencies' },
+  { label: 'education', href: '#education' },
+  { label: 'awards', href: '#awards' },
+  { label: 'projects', href: '#projects' },
+  { label: 'contact', href: '#contact' },
+];
 
 export function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const { scrollY } = useScroll();
 
-  const menuItems = [
-    { icon: Home, label: 'Home', href: '#home' },
-    { icon: User, label: 'About', href: '#about' },
-    { icon: Briefcase, label: 'Experience', href: '#experience' },
-    { icon: Award, label: 'Skills', href: '#skills' },
-    { icon: FileText, label: 'Projects', href: '#projects' },
-    { icon: Mail, label: 'Contact', href: '#contact' },
-  ];
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setScrolled(latest > 40);
+  });
+
+  // Track which section is in view
+  useEffect(() => {
+    const ids = ['home', ...links.map((l) => l.href.slice(1))];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { threshold: 0.2, rootMargin: '-60px 0px -40% 0px' }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
+      e.preventDefault();
+      setMenuOpen(false);
+      const id = href.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top, behavior: 'smooth' });
+      } else if (id === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    },
+    []
+  );
+
+  // Lock scroll when menu open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#141417]/95 backdrop-blur-sm border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
-          {/* Logo/Title */}
-          <h1 className="text-xs sm:text-sm md:text-base font-light text-[#919191] hover:text-white transition-colors duration-300 cursor-pointer">
-            Kaushik's Resume
-          </h1>
-          
-          {/* Menu Button */}
-          <button 
-            onClick={toggleMenu}
-            className="flex items-center gap-2 text-foreground cursor-pointer hover:scale-110 transition-all duration-300 group"
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
+          scrolled ? 'bg-[#141417]/90 backdrop-blur-sm' : 'bg-transparent'
+        }`}
+      >
+        {/* Single thin line that fades in on scroll */}
+        <div
+          className={`absolute bottom-0 left-0 right-0 h-px bg-white/6 transition-opacity duration-500 ${
+            scrolled ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 h-14 sm:h-16 flex items-center justify-between">
+          {/* Name */}
+          <a
+            href="#home"
+            onClick={(e) => scrollTo(e, '#home')}
+            className="text-[15px] text-white/50 hover:text-white/90 transition-colors duration-300 select-none"
+          >
+            kaushik.
+          </a>
+
+          {/* Desktop links */}
+          <nav className="hidden md:flex items-center gap-9">
+            {links.map((link) => {
+              const isActive = active === link.href.slice(1);
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => scrollTo(e, link.href)}
+                  className="relative py-1"
+                >
+                  <span
+                    className={`text-[13px] tracking-wide transition-colors duration-300 ${
+                      isActive
+                        ? 'text-white/90'
+                        : 'text-white/25 hover:text-white/60'
+                    }`}
+                  >
+                    {link.label}
+                  </span>
+
+                  {isActive && (
+                    <motion.span
+                      layoutId="underline"
+                      className="absolute -bottom-1 left-0 right-1 h-px bg-white/30"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* Mobile toggle — just text, not an icon */}
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="md:hidden text-[13px] tracking-wide text-white/30 hover:text-white/60 transition-colors duration-300 cursor-pointer select-none"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? (
-              <X size={20} className="text-[#919191] group-hover:text-white transition-colors" />
-            ) : (
-              <Menu size={20} className="text-[#919191] group-hover:text-white transition-colors" />
-            )}
-            <span className="text-xs sm:text-sm font-light text-[#919191] group-hover:text-white transition-colors hidden sm:inline">
-              {isMenuOpen ? 'Close' : 'Menu'}
-            </span>
+            {menuOpen ? 'close' : 'menu'}
           </button>
-        </div>
-
-        {/* Dropdown Menu */}
-        <div 
-          className={`absolute top-full left-0 right-0 bg-[#141417]/98 backdrop-blur-md border-b border-white/10 transition-all duration-500 ease-out overflow-hidden ${
-            isMenuOpen 
-              ? 'max-h-screen opacity-100 translate-y-0' 
-              : 'max-h-0 opacity-0 -translate-y-4'
-          }`}
-        >
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <ul className="space-y-1">
-              {menuItems.map((item, index) => (
-                <li
-                  key={item.label}
-                  className={`transform transition-all duration-500 ease-out ${
-                    isMenuOpen 
-                      ? 'translate-x-0 opacity-100' 
-                      : '-translate-x-8 opacity-0'
-                  }`}
-                  style={{ 
-                    transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' 
-                  }}
-                >
-                  <a
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center gap-4 px-4 py-3 rounded-lg text-[#919191] hover:text-white hover:bg-white/5 transition-all duration-300 group"
-                  >
-                    <item.icon 
-                      size={20} 
-                      className="text-[#919191] group-hover:text-white group-hover:scale-110 transition-all duration-300" 
-                    />
-                    <span className="text-sm sm:text-base font-light group-hover:translate-x-1 transition-transform duration-300">
-                      {item.label}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* Additional Info or CTA */}
-            <div className={`mt-6 pt-6 border-t border-white/10 transform transition-all duration-700 ${
-              isMenuOpen 
-                ? 'translate-y-0 opacity-100' 
-                : 'translate-y-4 opacity-0'
-            }`}>
-              <div className="flex flex-col sm:flex-row gap-3 px-4">
-                <button className="flex-1 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-[#ffffff] hover:text-white rounded-lg text-sm transition-all duration-300 border border-white/10 font-medium hover:border-white/20">
-                  Download Resume
-                </button>
-                <button className="flex-1 px-4 py-2.5 bg-white/95 hover:bg-white/10 text-[#000000] hover:text-white rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105">
-                  Get In Touch
-                </button>
-              </div>
-            </div>
-          </nav>
         </div>
       </header>
 
-      {/* Overlay */}
-      {isMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        />
-      )}      
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            {/* Backdrop — barely there */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-40 bg-black/40 md:hidden"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            {/* Panel — clean, flat, no glow, no border radius */}
+            <motion.nav
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className="fixed top-14 left-0 right-0 z-50 bg-[#141417] md:hidden"
+            >
+              <div className="h-px bg-white/6" />
+
+              <div className="max-w-5xl mx-auto px-5 sm:px-8 py-8 flex flex-col gap-1">
+                {links.map((link, i) => {
+                  const isActive = active === link.href.slice(1);
+                  return (
+                    <motion.a
+                      key={link.label}
+                      href={link.href}
+                      onClick={(e) => scrollTo(e, link.href)}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: i * 0.04, duration: 0.15 }}
+                      className={`py-3 transition-colors duration-300 flex items-center justify-between ${
+                        isActive
+                          ? 'text-white/90'
+                          : 'text-white/20 active:text-white/50'
+                      }`}
+                    >
+                      <span className="text-2xl tracking-tight font-light">
+                        {link.label}
+                      </span>
+                      {isActive && (
+                        <span className="w-1 h-1 rounded-full bg-white/40" />
+                      )}
+                    </motion.a>
+                  );
+                })}
+              </div>
+
+              <div className="h-px bg-white/6" />
+            </motion.nav>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }

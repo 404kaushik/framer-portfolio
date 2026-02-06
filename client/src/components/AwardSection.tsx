@@ -91,13 +91,13 @@ export function AwardSection() {
 
         {/* Decorative divider */}
       </div>
-        <motion.div
+        {/* <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
           className="h-px bg-linear-to-r from-transparent via-[#919191]/50 to-transparent mt-12 md:mt-16 origin-left"
-        />
+        /> */}
     </section>
   );
 }
