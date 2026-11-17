@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { AnimatedSection } from "./AnimatedSection"
 import { AnimatedSectionLeft } from "./AnimatedSectionLeft"
 
@@ -14,9 +15,15 @@ export function HeroSection({ name, profileImage = "/images/profilePic.JPG" }: H
     setIsLoaded(true)
   }, [])
 
+  // The intro drifts up a little slower than the page and dims as you leave it.
+  const reduce = useReducedMotion()
+  const { scrollY } = useScroll()
+  const y = useTransform(scrollY, [0, 700], [0, -90])
+  const opacity = useTransform(scrollY, [0, 600], [1, 0.2])
+
   return (
-    <section id="home" className="min-h-2.5 md:min-h-120 mt-12 md:mt-0 md:mb-12 flex items-center justify-center">
-      <div className="w-full sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-2xl mx-auto mt-2 md:mt-24 px-4 md:px-0">
+    <section id="home" className="min-h-2.5 md:min-h-120 mt-24 md:mt-0 md:mb-12 flex items-center justify-center">
+      <motion.div style={reduce ? undefined : { y, opacity }} className="w-full sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-2xl mx-auto mt-2 md:mt-24 px-4 md:px-0">
         <div className="grid md:grid-cols-2 gap-12 justify-start">
           <div className="md:col-span-1">
             <AnimatedSection>
@@ -73,7 +80,7 @@ export function HeroSection({ name, profileImage = "/images/profilePic.JPG" }: H
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

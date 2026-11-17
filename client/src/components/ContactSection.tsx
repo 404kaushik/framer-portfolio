@@ -19,13 +19,13 @@ export function ContactSection({ email, socialLinks = {} }: ContactSectionProps)
   ].filter((item) => item.href)
 
   return (
-    <section id="contact" className="relative bg-[#0e0e10] px-6 sm:px-10 md:px-16">
+    <section id="contact" className="relative px-6 sm:px-10 md:px-16">
       {/* Top divider */}
       <div className="max-w-3xl mx-auto">
         <div className="h-px bg-white/6" />
       </div>
 
-      <div className="max-w-3xl mx-auto py-28 sm:py-36 md:py-44">
+      <div className="max-w-3xl mx-auto pt-28 pb-8 sm:pt-36 md:pt-44">
         {/* Small label */}
         <motion.p
           initial={{ opacity: 0 }}
@@ -95,18 +95,6 @@ export function ContactSection({ email, socialLinks = {} }: ContactSectionProps)
         )}
       </div>
 
-      {/* Footer line */}
-      <div className="max-w-3xl mx-auto">
-        <div className="h-px bg-white/6" />
-        <div className="py-8 flex items-center justify-between">
-          <span className="text-[11px] text-white tracking-wide">
-            © {new Date().getFullYear()}
-          </span>
-          <span className="text-[11px] text-white tracking-wide">
-            Kaushik Nag Tumu
-          </span>
-        </div>
-      </div>
     </section>
   )
 }

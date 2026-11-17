@@ -6,8 +6,14 @@ import { EducationSection } from '@/components/EducationSection';
 import { AwardSection } from '@/components/AwardSection';
 import ProjectSection from '@/components/ProjectSection';
 import { ContactSection } from '@/components/ContactSection';
+import { WeatherBackground } from '@/components/WeatherBackground';
+import { GitHubSection } from '@/components/GitHubSection';
+import { WeatherProvider } from '@/contexts/WeatherContext';
+import { Footer } from '@/components/Footer';
+import { useSmoothScroll } from '@/lib/smoothScroll';
 
 export default function Home() {
+  useSmoothScroll();
   const portfolio = {
     name: 'Kaushik Nag Tumu',
     about: {
@@ -48,7 +54,10 @@ export default function Home() {
   };
 
   return (
+    <WeatherProvider>
     <div className="min-h-screen overflow-x-clip bg-[#141417] text-foreground">
+      <WeatherBackground />
+      <div className="relative z-10">
       <Navigation />
       <HeroSection name={portfolio.name} />
       <ProficienciesSection />
@@ -56,11 +65,15 @@ export default function Home() {
       <EducationSection items={portfolio.education} />
       <AwardSection />
       <ProjectSection />
+      <GitHubSection />
       <ContactSection email="kaushiknag72@outlook.com" socialLinks={{
         linkedin: 'https://www.linkedin.com/in/kaushiknagtumu',
         instagram: 'https://www.instagram.com/kaushiknag',
         github: 'https://www.github.com/404kaushik',
       }} />
+      <Footer />
+      </div>
     </div>
+    </WeatherProvider>
   );
 }
