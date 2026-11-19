@@ -88,7 +88,7 @@ export function Footer() {
         }}
       />
 
-      <div className="relative z-20 mx-auto max-w-5xl px-4 pt-20 sm:px-6 md:pt-28">
+      <div className="site-wrap relative z-20 pt-20 md:pt-28">
         <h2 id="footer-title" className="sr-only">
           Site footer
         </h2>
@@ -227,7 +227,7 @@ export function Footer() {
 
       {/* The ground */}
       <div className="relative z-20 bg-[#07080c]">
-        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-6 text-xs text-[#7a7a7a] sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="site-wrap flex flex-col gap-4 py-6 text-xs text-[#7a7a7a] sm:flex-row sm:items-center sm:justify-between">
           <span>© {now.getFullYear()} Kaushik Nag Tumu</span>
           <span>Live weather from Open-Meteo · Contributions from GitHub</span>
           <button onClick={backToTop} className="footer-top group inline-flex items-center gap-2 self-start text-[#cfcfcf] sm:self-auto">

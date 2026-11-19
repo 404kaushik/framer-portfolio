@@ -1,79 +1,37 @@
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
-import { ProficienciesSection } from '@/components/ProficienciesSection';
-import { WorkSection } from '@/components/WorkSection';
-import { EducationSection } from '@/components/EducationSection';
-import { AwardSection } from '@/components/AwardSection';
 import ProjectSection from '@/components/ProjectSection';
+import { WorkSection } from '@/components/WorkSection';
+import { ProficienciesSection } from '@/components/ProficienciesSection';
+import { EducationSection } from '@/components/EducationSection';
+import { GitHubSection } from '@/components/GitHubSection';
 import { ContactSection } from '@/components/ContactSection';
 import { WeatherBackground } from '@/components/WeatherBackground';
-import { GitHubSection } from '@/components/GitHubSection';
 import { WeatherProvider } from '@/contexts/WeatherContext';
 import { Footer } from '@/components/Footer';
 import { useSmoothScroll } from '@/lib/smoothScroll';
 
+/** Order follows what a recruiter looks for: the work, then the roles, then the rest. */
 export default function Home() {
   useSmoothScroll();
-  const portfolio = {
-    name: 'Kaushik Nag Tumu',
-    about: {
-      highlights: [
-        'Software & Data Engineer',
-        'Based in Toronto',
-        '5+ Years Experience',
-      ],
-      description:
-        `When I\'m not coding, you\'ll find me on the tennis court, gaming, or sharing a good meal with friends.`,
-    },
-    proficiencies: [
-      { category: 'Skills', items: ['API Design', 'Frontend Architecture'] },
-    ],
-    work: [
-      {
-        company: 'Designed Securities Ltd.',
-        position: 'Software Engineer',
-        period: '2025 - Now',
-        location: 'Toronto',
-        description: 'Building scalable web applications and leading frontend architecture decisions.',
-      },
-      {
-        company: 'Junior Achievement Northeast Ontario',
-        position: 'Research Data Assistant',
-        period: '2020 - 2022',
-        location: 'Petborough',
-        description: 'Developed and maintained multiple client projects using React and Node.js.',
-      },
-    ],
-    education: [
-      {
-        institution: 'University of Toronto',
-        degree: 'Bachelor of Science in Computer Science',
-        period: '2016 - 2020',
-      },
-    ],
-  };
-
   return (
     <WeatherProvider>
-    <div className="min-h-screen overflow-x-clip bg-[#141417] text-foreground">
-      <WeatherBackground />
-      <div className="relative z-10">
-      <Navigation />
-      <HeroSection name={portfolio.name} />
-      <ProficienciesSection />
-      <WorkSection items={portfolio.work} />
-      <EducationSection items={portfolio.education} />
-      <AwardSection />
-      <ProjectSection />
-      <GitHubSection />
-      <ContactSection email="kaushiknag72@outlook.com" socialLinks={{
-        linkedin: 'https://www.linkedin.com/in/kaushiknagtumu',
-        instagram: 'https://www.instagram.com/kaushiknag',
-        github: 'https://www.github.com/404kaushik',
-      }} />
-      <Footer />
+      <div className="min-h-screen overflow-x-clip bg-[#141417] text-foreground">
+        <WeatherBackground />
+        <div className="relative z-10">
+          <Navigation />
+          <main>
+            <HeroSection />
+            <ProjectSection />
+            <WorkSection />
+            <ProficienciesSection />
+            <EducationSection />
+            <GitHubSection />
+            <ContactSection />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
     </WeatherProvider>
   );
 }

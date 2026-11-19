@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
-import { AnimatedSection } from "./AnimatedSection"
-import { AnimatedSectionLeft } from "./AnimatedSectionLeft"
 
 interface HeroSectionProps {
-  name: string
+  name?: string
   profileImage?: string
 }
 
-export function HeroSection({ name, profileImage = "/images/profilePic.JPG" }: HeroSectionProps) {
+export function HeroSection({ name = "Kaushik Nag Tumu", profileImage = "/images/profilePic.JPG" }: HeroSectionProps) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -26,9 +24,9 @@ export function HeroSection({ name, profileImage = "/images/profilePic.JPG" }: H
       <motion.div style={reduce ? undefined : { y, opacity }} className="w-full sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-2xl mx-auto mt-2 md:mt-24 px-4 md:px-0">
         <div className="grid md:grid-cols-2 gap-12 justify-start">
           <div className="md:col-span-1">
-            <AnimatedSection>
+            <div>
               <h1 className="text-5xl md:text-5xl text-foreground tracking-tighter">{name}</h1>
-            </AnimatedSection>
+            </div>
           </div>
           <div className="md:col-span-1 flex">
             <div className="relative w-96 h-52 md:w-[50%] md:h-[50%]">
@@ -47,7 +45,7 @@ export function HeroSection({ name, profileImage = "/images/profilePic.JPG" }: H
                 />  
                               
               </div>
-              <AnimatedSection>
+              <div>
                 <img
                   src={profileImage || "/placeholder.svg"}
                   alt={name}
@@ -55,26 +53,26 @@ export function HeroSection({ name, profileImage = "/images/profilePic.JPG" }: H
                     isLoaded ? "sm:hidden opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-12 scale-90"
                   }`}
                 />
-              </AnimatedSection>
+              </div>
               <div className="space-y-4">
                 <div className="w-full md:w-96 flex justify-between gap-20 pb-2 md:mt-4 animate-fadeInUp border-b border-[#919191]/25 md:py-4">
-                  <AnimatedSection>
+                  <div>
                     <p className="text-base md:font-light mt-2">About</p>
-                  </AnimatedSection>
-                  <AnimatedSectionLeft>
+                  </div>
+                  <div>
                     <ul className="w-80 flex flex-col items-start mt-2 border-white/50">
                       <li className="text-sm font-light text-[#919191]">Software & Data Engineer</li>
                       <li className="text-sm font-light text-[#919191]">Based in Ontario, Canada</li>
                       <li className="text-sm font-light text-[#919191]">SWE @ Designed Securities Ltd.</li>
                     </ul>
-                  </AnimatedSectionLeft>
+                  </div>
                 </div>
                 <div className="w-80 flex justify-center md:mt-4 text-left">
-                  <AnimatedSectionLeft>
+                  <div>
                     <p className="text-sm font-light text-[#919191]">
                       When I'm not coding, you'll find me on the tennis court, gaming, or sharing a good meal with friends.
                     </p>
-                  </AnimatedSectionLeft>
+                  </div>
                 </div>
               </div>
             </div>

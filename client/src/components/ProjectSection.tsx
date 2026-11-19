@@ -48,13 +48,14 @@ export default function ProjectSection() {
   };
 
   return (
-    <section id="projects" className="relative px-4 py-24 sm:px-6 md:py-32">
-      <div className="mx-auto max-w-5xl">
+    <section id="projects" className="site-section relative">
+      <div className="site-wrap">
         {/* Heading row */}
         <div className="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-4xl tracking-tight text-[#E2E2E2] sm:text-5xl md:text-6xl">Selected work</h2>
-            <p className="mt-4 text-sm text-[#919191]">
+            <p className="font-mono text-[12px] tabular-nums text-[#7a7a7a]">01</p>
+            <h2 className="section-title mt-3 text-[#f2f2f2]">Selected work</h2>
+            <p className="mt-4 text-[15px] text-[#9a9a9a]">
               {all.length} projects · {wins} hackathon wins · {span}
             </p>
           </div>

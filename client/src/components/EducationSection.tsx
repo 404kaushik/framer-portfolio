@@ -1,10 +1,8 @@
 import { motion } from 'framer-motion';
 import { FaBriefcase, FaGraduationCap } from "react-icons/fa";
 import { IoCalendarSharp } from "react-icons/io5";
-import { AnimatedSection } from './AnimatedSection';
 import { IoLocationOutline } from "react-icons/io5";
 import { GraduationCap } from 'lucide-react';
-import { AnimatedSectionLeft } from './AnimatedSectionLeft';
 
 interface EducationItem {
   institution: string;
@@ -13,10 +11,10 @@ interface EducationItem {
 }
 
 interface EducationSectionProps {
-  items: EducationItem[];
+  items?: EducationItem[];
 }
 
-export function EducationSection({ items }: EducationSectionProps) {
+export function EducationSection(_props: EducationSectionProps = {}) {
   const style = document.createElement('style');
   style.textContent = `
     .scrollbar-hide::-webkit-scrollbar {
@@ -46,12 +44,12 @@ export function EducationSection({ items }: EducationSectionProps) {
       <div className="container max-w-2xl mx-auto">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between md:items-start mb-8 md:mb-0">
-          <AnimatedSection className="md:sticky md:top-20 self-start">
+          <div className="md:sticky md:top-20 self-start">
             <h2 className="text-3xl sm:text-4xl md:text-4xl md:font-normal mb-6 md:mb-0">Education</h2>
-          </AnimatedSection>
+          </div>
         {/* Education Items Container */}
         <div className="w-full md:w-80 md:ml-auto space-y-6 md:space-y-0">
-          <AnimatedSectionLeft>
+          <div>
 
             {/* Education Item 1 - Highest */}
             <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8">
@@ -111,9 +109,9 @@ export function EducationSection({ items }: EducationSectionProps) {
                 </ul>
               </p>
             </div>
-          </AnimatedSectionLeft>
+          </div>
 
-        <AnimatedSectionLeft>
+        <div>
 
           {/* Education Item 2 - High School */}
           <div className="space-y-3 md:space-y-1 pb-6 md:pb-8 md:py-8">
@@ -169,7 +167,7 @@ export function EducationSection({ items }: EducationSectionProps) {
                 </ul>
               </p>
           </div>
-        </AnimatedSectionLeft>
+        </div>
         </div>
         </div>
 

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 
 interface ContactSectionProps {
-  email: string
+  email?: string
   socialLinks?: {
     linkedin?: string
     instagram?: string
@@ -11,7 +11,14 @@ interface ContactSectionProps {
   }
 }
 
-export function ContactSection({ email, socialLinks = {} }: ContactSectionProps) {
+export function ContactSection({
+  email = "kaushiknag72@outlook.com",
+  socialLinks = {
+    linkedin: "https://www.linkedin.com/in/kaushiknagtumu",
+    instagram: "https://www.instagram.com/kaushiknag",
+    github: "https://www.github.com/404kaushik",
+  },
+}: ContactSectionProps) {
   const socials = [
     { label: "LinkedIn", href: socialLinks.linkedin },
     { label: "Instagram", href: socialLinks.instagram },

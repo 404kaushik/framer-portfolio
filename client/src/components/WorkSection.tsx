@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaBriefcase } from "react-icons/fa";
 import { IoCalendarSharp } from "react-icons/io5";
-import { AnimatedSection } from './AnimatedSection';
-import { AnimatedSectionLeft } from './AnimatedSectionLeft';
 import { IoLocationOutline } from "react-icons/io5";
 
 interface WorkItem {
@@ -14,10 +12,10 @@ interface WorkItem {
 }
 
 interface WorkSectionProps {
-  items: WorkItem[];
+  items?: WorkItem[];
 }
 
-export function WorkSection({ items }: WorkSectionProps) {
+export function WorkSection(_props: WorkSectionProps = {}) {
   const style = document.createElement('style');
   style.textContent = `
     .scrollbar-hide::-webkit-scrollbar {
@@ -47,14 +45,14 @@ export function WorkSection({ items }: WorkSectionProps) {
       <div className="container max-w-2xl mx-auto">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between md:items-start mb-8 md:mb-0">
-          <AnimatedSection className="md:sticky md:top-20 self-start">
+          <div className="md:sticky md:top-20 self-start">
             <h2 className="text-3xl sm:text-4xl md:text-4xl md:font-normal mb-6 md:mb-0">Work</h2>
-          </AnimatedSection>
+          </div>
 
 
           {/* Work Items Container */}
           <div className="w-full md:w-80 md:ml-auto space-y-6 md:space-y-0">
-            <AnimatedSectionLeft>
+            <div>
 
               {/* Work Item 1 - Current */}
               <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8">
@@ -108,10 +106,10 @@ export function WorkSection({ items }: WorkSectionProps) {
                   At designed, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
                 </p>
               </div>
-            </AnimatedSectionLeft>
+            </div>
 
 
-            <AnimatedSectionLeft>
+            <div>
 
               {/* Work Item 2 */}
               <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8 md:py-8">
@@ -162,10 +160,10 @@ export function WorkSection({ items }: WorkSectionProps) {
                   At Junior Achievement, I was a Research Data Assistant where I was responsible for data collection and analysis for various research projects.
                 </p>
               </div>
-            </AnimatedSectionLeft>
+            </div>
 
 
-            <AnimatedSectionLeft>
+            <div>
 
               {/* Work Item 3 */}
               <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8 md:py-8">
@@ -216,10 +214,10 @@ export function WorkSection({ items }: WorkSectionProps) {
                   Building scalable web applications and leading frontend architecture decisions.
                 </p>
               </div>
-            </AnimatedSectionLeft>
+            </div>
 
 
-            <AnimatedSectionLeft>
+            <div>
 
               {/* Work Item 4 */}
               <div className="space-y-3 md:space-y-1 border-b border-[#919191]/25 pb-6 md:pb-8 md:py-8">
@@ -270,10 +268,10 @@ export function WorkSection({ items }: WorkSectionProps) {
                   At EasyFits, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
                 </p>
               </div>
-            </AnimatedSectionLeft>
+            </div>
 
 
-            <AnimatedSectionLeft>
+            <div>
 
               {/* Work Item 5 */}
               <div className="space-y-3 md:space-y-1 pb-6 md:pb-8 md:py-8">
@@ -324,7 +322,7 @@ export function WorkSection({ items }: WorkSectionProps) {
                   At EasyFits, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
                 </p>
               </div>
-            </AnimatedSectionLeft>
+            </div>
           </div>
 
         </div>

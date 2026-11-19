@@ -13,11 +13,10 @@ export const EMAIL = 'kaushiknag72@outlook.com';
 
 export const SECTIONS = [
   { id: 'home', label: 'Home' },
-  { id: 'work', label: 'Work' },
-  { id: 'proficiencies', label: 'Skills' },
+  { id: 'projects', label: 'Work' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
   { id: 'education', label: 'Education' },
-  { id: 'awards', label: 'Awards' },
-  { id: 'projects', label: 'Projects' },
   { id: 'github', label: 'GitHub' },
   { id: 'contact', label: 'Contact' },
 ];
@@ -45,7 +44,7 @@ export function scrollToSection(id: string) {
     scrollToY(0, 1.4);
     return;
   }
-  scrollToY(el.getBoundingClientRect().top + window.scrollY - 88);
+  scrollToY(el.getBoundingClientRect().top + window.scrollY - 24);
 }
 
 export async function copyEmail() {

@@ -95,12 +95,13 @@ export function GitHubSection() {
   const recent = data?.repos.slice(0, 3) ?? [];
 
   return (
-    <section id="github" className="w-full mx-auto px-4 sm:px-6 py-12 md:py-16">
-      <div className="container max-w-2xl mx-auto">
+    <section id="github" className="site-section">
+      <div className="site-wrap">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-8">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:font-normal">GitHub activity</h2>
-            <p className="mt-2 text-sm text-[#919191]">
+            <p className="font-mono text-[12px] tabular-nums text-[#7a7a7a]">05</p>
+            <h2 className="section-title mt-3 text-[#f2f2f2]">GitHub activity</h2>
+            <p className="mt-4 text-[15px] text-[#9a9a9a]">
               Live from <span className="text-[#E2E2E2]">@{GITHUB_USER}</span>
               {data ? ` · ${data.publicRepos} public repositories` : ''}
             </p>
@@ -109,7 +110,7 @@ export function GitHubSection() {
             href={PROFILE_URL}
             target="_blank"
             rel="noreferrer"
-            className="gh-btn inline-flex h-10 items-center justify-center gap-2 self-start rounded-full bg-[#E2E2E2] px-4 text-sm text-[#0e0e10] hover:bg-white md:self-auto"
+            className="gh-btn inline-flex h-10 items-center justify-center gap-2 self-start rounded-full border border-white/15 px-4 text-sm text-[#f2f2f2] hover:border-white/30 hover:bg-white/[0.06] md:self-auto"
           >
             <FaGithub className="h-4 w-4" aria-hidden="true" />
             View GitHub profile
