@@ -74,7 +74,7 @@ export function WorkSection(_props: WorkSectionProps = {}) {
                   </div>
                   <p className="text-xs sm:text-sm font-base text-[#919191] flex items-center gap-2">
                     <IoLocationOutline className="w-4 h-4" />
-                    Peterborough
+                    Toronto
                   </p>
                 </div>
 
@@ -97,13 +97,13 @@ export function WorkSection(_props: WorkSectionProps = {}) {
                   <div className="mr-auto">
                     <p className="text-xs font-base text-[#919191] flex items-center gap-2">
                       <IoLocationOutline className="w-4 h-4" />
-                      Peterborough
+                      Toronto
                     </p>
                   </div>
                 </div>
 
                 <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                  At designed, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
+                  I manage and maintain the company's data. Day to day I work in Microsoft Fabric, Power BI and Excel: building data pipelines, keeping reports accurate, and automating manual work.
                 </p>
               </div>
             </div>
@@ -157,7 +157,7 @@ export function WorkSection(_props: WorkSectionProps = {}) {
                 </div>
 
                 <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                  At Junior Achievement, I was a Research Data Assistant where I was responsible for data collection and analysis for various research projects.
+                  Collected and analyzed data for research projects.
                 </p>
               </div>
             </div>
@@ -211,7 +211,7 @@ export function WorkSection(_props: WorkSectionProps = {}) {
                 </div>
 
                 <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                  Building scalable web applications and leading frontend architecture decisions.
+                  Built features for the web app across frontend and backend.
                 </p>
               </div>
             </div>
@@ -265,7 +265,7 @@ export function WorkSection(_props: WorkSectionProps = {}) {
                 </div>
 
                 <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                  At EasyFits, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
+                  Built and maintained the frontend of the web app.
                 </p>
               </div>
             </div>
@@ -319,7 +319,7 @@ export function WorkSection(_props: WorkSectionProps = {}) {
                 </div>
 
                 <p className="text-sm sm:text-base md:text-sm font-base text-[#919191] mt-2">
-                  At EasyFits, I mainly work on maintaining company's data. Primary services I work on daily is Fabric, PowerBI, and Excel.
+                  Supported students in computer science courses through labs, grading and office hours.
                 </p>
               </div>
             </div>
